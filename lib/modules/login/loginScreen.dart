@@ -1,4 +1,4 @@
-import 'package:first/modules/messenger/MessengerScreen.dart';
+//import 'package:first/modules/messenger/MessengerScreen.dart';
 import 'package:first/shared/components/components.dart';
 import 'package:flutter/material.dart';
 
@@ -49,9 +49,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     label: 'Email',
                     prefix: Icons.email,
                     type: TextInputType.emailAddress,
-                   validate: (String value)
+                   validate: (String? value)
                     {
-                       if (emailController.text.isEmpty)
+                       if (value!.isEmpty)
                           {
                             return 'email must not be empty';
                           }
@@ -69,9 +69,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     isPassword: isPassword,
                     suffix: Icons.remove_red_eye ,
 
-                    validate: (value)
+                    validate: (String? value)
                     {
-                      if (value == null)
+                      if (value!.isEmpty)
                         {
                           return 'password must not be empty!';
                         }
@@ -92,7 +92,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       {
                         if(formKey.currentState!.validate())
                          {
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=> const MessengerScreen()));
+                           print('validated');
+                          //  Navigator.push(context, MaterialPageRoute(builder: (context)=> const MessengerScreen()));
                          }
                       },
                       text: 'login',
