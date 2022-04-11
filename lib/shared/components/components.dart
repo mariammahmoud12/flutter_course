@@ -34,6 +34,7 @@ Widget DefaultFormFeild({
   IconData? suffix,
   Function? suffisPressed,
   required Function validate,
+ // Function? onTap,
 }) =>
     TextFormField(
   controller: controller,
@@ -43,6 +44,7 @@ Widget DefaultFormFeild({
   {
     validate(s);
     },
+   //   onTap: onTap!(),
   decoration: InputDecoration(
     labelText: label,
     prefixIcon:Icon(
@@ -55,3 +57,36 @@ Widget DefaultFormFeild({
     border:const OutlineInputBorder(),
   ),
 );
+
+Widget TappedFormFeild({
+  required TextEditingController controller,
+  required TextInputType type,
+  required String label,
+  required prefix,
+  bool isPassword = false,
+ // IconData? suffix,
+ // Function? suffisPressed,
+  required Function validate,
+  required Function onTap,
+}) =>
+    TextFormField(
+      controller: controller,
+      keyboardType: type,
+      obscureText: isPassword,
+      validator: (s)
+      {
+        validate(s);
+      },
+      onTap: onTap(),
+      decoration: InputDecoration(
+        labelText: label,
+        prefixIcon:Icon(
+          prefix,
+        ),
+        // suffixIcon: suffix != null ? IconButton(
+        //   icon: Icon(suffix),
+        //   onPressed:suffisPressed!(),
+        // ) : null,
+        border:const OutlineInputBorder(),
+      ),
+    );
